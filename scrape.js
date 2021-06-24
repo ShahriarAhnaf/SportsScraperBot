@@ -14,7 +14,6 @@ request('https://www.espn.com/soccer/fixtures/_/league/uefa.euro', (error, respo
             const status = $(element)
             .find('.record')
             .text();
-            console.log(status);
             //get left side team
             const team1 = $(element)
             .find('td')
@@ -32,14 +31,17 @@ request('https://www.espn.com/soccer/fixtures/_/league/uefa.euro', (error, respo
           teamSideA.push(team1);
           teamSideB.push(team2);
             
-          console.log(`${team1} vs ${team2}`);
+         // console.log(`${team1} vs ${team2}`);
         });
         
     }
-});
+    
 for (var i = 0; i < teamSideA.length; i++){
     console.log(`${teamSideA[i]} ${statusArr[i]} ${teamSideB[i]}`);
+    console.log(i)
 }
+});
+
 
 //FIX PUSH FUNCTION
 console.log(teamSideB);
