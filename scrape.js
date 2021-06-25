@@ -6,10 +6,13 @@ var teamSideA = [""],
     statusArr = [""],
     dates = [];
 var counterPerDay = [0]; 
+
 request('https://www.espn.com/soccer/fixtures/_/league/uefa.euro', (error, response, html)=>{
     if(!error && response.statusCode ==200){
         const $ = cheerio.load(html);
         const $2 = cheerio.load(html);
+
+
 
         $2(".table-caption").each((n,el)=>{
             const date = $2(el).text();
@@ -35,25 +38,24 @@ request('https://www.espn.com/soccer/fixtures/_/league/uefa.euro', (error, respo
             const team2 = $(element)
             .find('td')
             .find('span:last')
-            .text()
-                
+            .text();
+
             //push into array for later
             statusArr.push(status);
             teamSideA.push(team1);
             teamSideB.push(team2);
-                //increase counter number in hte array
+             //increase counter number in hte array
               counterPerDay[n]= i;
-            //console.log(`${team1} ${status} ${team2}`);
             });
         });
     }
 
-    console.log(dates);
-/*for (var i = 0; i < teamSideA.length; i++){
+//    console.log(dates);
+for (var i = 0; i < teamSideA.length; i++){
     console.log(`${teamSideA[i]} ${statusArr[i]} ${teamSideB[i]}`);
     console.log(i);
 }
-*/
+
 
 
 });
